@@ -2,6 +2,8 @@
 
 namespace Controller\Test;
 
+use Controller\MainController;
+
 class TestController extends MainController
 {
     public function testGet($name)

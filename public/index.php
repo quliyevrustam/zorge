@@ -12,8 +12,8 @@ try {
     $dispatcher = FastRoute\simpleDispatcher(function (RouteCollector $r)
     {
         $r->addRoute('GET', '/', [\Controller\Index\IndexController::class, 'index']);
-        $r->addRoute('GET', '/test/get/{name}', [Controller\Test\TestController::class, 'testGet']);
-        $r->addRoute('GET', '/test/post', [Controller\Test\TestController::class, 'viewTestPost']);
+        $r->addRoute('GET', '/test/get/{name}', [\Controller\Test\TestController::class, 'testGet']);
+        $r->addRoute('GET', '/test/post', [\Controller\Test\TestController::class, 'viewTestPost']);
         $r->addRoute('POST', '/test/post', [\Controller\Test\TestController::class, 'testPost']);
     });
 
@@ -30,9 +30,14 @@ try {
             break;
 
         case FastRoute\Dispatcher::FOUND:
-            $controller = isset($route[1][0]) ? $route[1][0] : \Controller\IndexController::class;
+
+            $controller = isset($route[1][0]) ? $route[1][0] : \Controller\Index\IndexController::class;
             $method = isset($route[1][1]) ? $route[1][1] : 'index';
             $parameters = $route[2];
+
+            //echo "<pre>";
+            //print_r($route);
+            //exit();
 
             $html = (new $controller($container))->$method(...array_values($parameters));
             echo $html;
