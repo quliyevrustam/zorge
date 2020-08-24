@@ -9,6 +9,7 @@ try {
     // Create DI Container and write it to $container
     require_once (dirname(__DIR__ ).'/config/di.config.php');
 
+    // Routing
     $dispatcher = FastRoute\simpleDispatcher(function (RouteCollector $r)
     {
         $r->addRoute('GET', '/', [\Controller\Index\IndexController::class, 'index']);
@@ -17,6 +18,7 @@ try {
         $r->addRoute('POST', '/test/post', [\Controller\Test\TestController::class, 'testPost']);
     });
 
+    // Get current route by HTTP Request
     $http = $container->get('http');
     $route = $dispatcher->dispatch($http->getMethod(), $http->getPathInfo());
     switch ($route[0])
@@ -31,17 +33,13 @@ try {
 
         case FastRoute\Dispatcher::FOUND:
 
+            // Get Controller, Controller Method and Controller Method Arguments
             $controller = isset($route[1][0]) ? $route[1][0] : \Controller\Index\IndexController::class;
             $method = isset($route[1][1]) ? $route[1][1] : 'index';
-            $parameters = $route[2];
+            $arguments = $route[2];
 
-            //echo "<pre>";
-            //print_r($route);
-            //exit();
-
-            $html = (new $controller($container))->$method(...array_values($parameters));
+            $html = (new $controller($container))->$method(...array_values($arguments));
             echo $html;
-
 
             break;
     }

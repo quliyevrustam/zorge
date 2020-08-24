@@ -20,7 +20,7 @@ $containerBuilder->addDefinitions([
         return $http;
     },
     'tmp' => function () {
-        $loader = new \Twig\Loader\FilesystemLoader(dirname(__DIR__) . '/scr/View');
+        $loader = new \Twig\Loader\FilesystemLoader(dirname(__DIR__) . '/src/View');
         $twig = new \Twig\Environment($loader, [
             'cache' => dirname(__DIR__) . '/cache',
             'debug' => true,
