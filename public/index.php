@@ -38,8 +38,8 @@ try {
             $method = isset($route[1][1]) ? $route[1][1] : 'index';
             $arguments = $route[2];
 
-            $html = (new $controller($container))->$method(...array_values($arguments));
-            echo $html;
+            $page = (new $controller($container))->$method(...array_values($arguments));
+            echo $page;
 
             break;
     }

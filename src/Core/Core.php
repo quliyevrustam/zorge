@@ -6,7 +6,7 @@ use Psr\Container\ContainerInterface;
 
 class Core
 {
-    protected $container;
+    private $container;
 
     private $db;
     private $session;
@@ -14,8 +14,6 @@ class Core
     public function __construct(ContainerInterface $container)
     {
         $this->container        = $container;
-        $this->db               = $container->get('db');
-        $this->session          = $container->get('session');
     }
 
     protected function model($className)
@@ -25,15 +23,20 @@ class Core
 
     protected function db()
     {
-        if(is_null($this->db)) $this->db = $this->container->get();
+        if(is_null($this->db)) $this->db = $this->getDI()->get();
 
         return $this->db;
     }
 
     protected function session()
     {
-        if(is_null($this->session)) $this->session = $this->container->get('session');
+        if(is_null($this->session)) $this->session = $this->getDI()->get('session');
 
         return $this->session;
+    }
+
+    protected function getDI()
+    {
+        return $this->container;
     }
 }
