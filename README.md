@@ -6,38 +6,38 @@
 
 I have compiled Micro Framework from the following components:
 
-* For Routing: [FastRoute](https://github.com/nikic/FastRoute)
-* For working with HTTP: [symfony/http-foundation](https://github.com/symfony/http-foundation)
-* For Dependency Injection: [PHP-DI](https://github.com/PHP-DI/PHP-DI)
-* For Template Engine: [Twig](https://github.com/twigphp/Twig)
-* For work with Databases: [PDO](https://www.php.net/manual/en/book.pdo.php)
+* For **Routing**: [FastRoute](https://github.com/nikic/FastRoute)
+* For working with **HTTP**: [symfony/http-foundation](https://github.com/symfony/http-foundation)
+* For **Dependency Injection**: [PHP-DI](https://github.com/PHP-DI/PHP-DI)
+* For **Template Engine**: [Twig](https://github.com/twigphp/Twig)
+* For work with **Databases**: [PDO](https://www.php.net/manual/en/book.pdo.php)
 
 ## What to do after cloning a repository?
 
 1. Run `composer update`
 2. Create in folder **config** file _config.php_ using _config.example.php_
-3. Create, in core, folder **cache** (chmod 421)
+3. Create, in core, folder **cache** (`chmod 744 cache`)
 
 ![](https://miro.medium.com/max/700/1*JwJspWRLr_jPv9yvyBd1lA.png)
 
 ## Framework Structure
 
-* cache
-* config
+* **cache**
+* **config**
   * config.php - _Basic settings to hide_
   * di.config.php - _Dependency Injection settings_
-* public
+* **public**
   * index.php
-* src
+* **src**
   * Controller
     * MainController.php -_Parrent class for Controller's_
   * Core
     * Core.php - _Parrent class for Controller's and Model's_
   * Model
     * MainModel.php - _Parrent class for Model's_
-* Utilities
+* **Utilities**
   * Database.php - _Database connection class_
-* View HTML-шаблоны
+* **View** HTML-шаблоны
 
 ## Parrent method's (Controller's and Model's)
 

@@ -1,42 +1,42 @@
-[ENGLISH VERSION](https://github.com/xryst/zorge/blob/master/README_EN.md)
+[ENGLISH VERSION](https://github.com/xryst/zorge/blob/master/README.md)
 
 # Micro Framework своими руками
 
 ## Компоненты
 
 Я собрал Micro Framework из следующих компонентов:
-* Для Routing: [**FastRoute**](https://github.com/nikic/FastRoute)
-* Для работы с HTTP: [**symfony/http-foundation**](https://github.com/symfony/http-foundation)
-* Для Dependency Injection: [**PHP-DI**](https://github.com/PHP-DI/PHP-DI)
-* В качество Template Engine: [**Twig**](https://github.com/twigphp/Twig)
-* Для работы с Базами Данных: [**PDO**](https://www.php.net/manual/en/book.pdo.php)
+* Для **Routing**: [**FastRoute**](https://github.com/nikic/FastRoute)
+* Для работы с **HTTP**: [**symfony/http-foundation**](https://github.com/symfony/http-foundation)
+* Для **Dependency Injection**: [**PHP-DI**](https://github.com/PHP-DI/PHP-DI)
+* В качество **Template Engine**: [**Twig**](https://github.com/twigphp/Twig)
+* Для работы с **Базами Данных**: [**PDO**](https://www.php.net/manual/en/book.pdo.php)
 
 ## Что делать после клонирования репозитория?
 
 1. Запустить `composer update`
 2. Создать в папке **config** создать файл _config.php- взяв за основу _config.example.php_
-3. Создать в корне папку **cache** (`chmod 777 cache`)
+3. Создать в корне папку **cache** (`chmod 744 cache`)
 
 ![](https://miro.medium.com/max/700/1*JwJspWRLr_jPv9yvyBd1lA.png)
 
 ## Структура Framework-а
 
-* cache
-* config
+* **cache**
+* **config**
   * config.php - _Основные настрйки, которые нужно скрывать_
   * di.config.php - _Настройки Dependency Injection_
-* public
+* **public**
   * index.php
-* src
+* **src**
   * Controller
     * MainController.php -_Родительский класс для всех Controller-ов_
   * Core
     * Core.php - _Родительский класс для всех Controller-ов и Model-ей_
   * Model
     * MainModel.php - _Родительский класс для всех Model-ей_
-* Utilities
+* **Utilities**
   * Database.php - _Класс подключения к Базе Данных_
-* View HTML-шаблоны
+* **View** HTML-шаблоны
 
 ## Родительские методы (Controller-ы и Model-и)
 * **$this->model({CLASSNAME})** — _обращение к моделям (Controller-ы и Model-и)_
