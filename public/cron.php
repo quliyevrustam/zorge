@@ -23,6 +23,7 @@ $cronClassMethodName = 'action'.str_replace(' ', '', ucwords(
     );
 
 use Model\Cron\Cron;
+use Utilities\Helper;
 
 try {
     $beginTime = microtime(true);
@@ -45,6 +46,7 @@ try {
 }
 catch (Throwable $exception)
 {
+    Helper::logError($exception->getMessage());
     print_r($exception->getTraceAsString());
     print_r($exception->getMessage());
 }
