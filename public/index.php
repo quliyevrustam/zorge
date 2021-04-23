@@ -19,7 +19,7 @@ try {
     });
 
     // Get current route by HTTP Request
-    $http = $container->get('http');
+    $http = (ZorgeDI::getContainer())->get('http');
     $route = $dispatcher->dispatch($http->getMethod(), $http->getPathInfo());
     switch ($route[0])
     {
@@ -38,7 +38,7 @@ try {
             $method = isset($route[1][1]) ? $route[1][1] : 'index';
             $arguments = $route[2];
 
-            $page = (new $controller($container))->$method(...array_values($arguments));
+            $page = (new $controller())->$method(...array_values($arguments));
             echo $page;
 
             break;
