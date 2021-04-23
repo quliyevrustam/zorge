@@ -23,7 +23,7 @@ class Core
 
     protected function db()
     {
-        if(is_null($this->db)) $this->db = $this->getDI()->get();
+        if(is_null($this->db)) $this->db = $this->getDI()->get('db');
 
         return $this->db;
     }
