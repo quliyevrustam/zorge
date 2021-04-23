@@ -32,11 +32,12 @@ try {
         'cron_class_name'        => $cronClassName,
         'cron_class_method_name' => $cronClassMethodName,
     ];
-    $cron = (new Cron($container));
+
+    $cron = (new Cron());
 
     $cron->beginWork($cronData);
 
-    (new $cronClassName($container))->$cronClassMethodName();
+    (new $cronClassName())->$cronClassMethodName();
 
     $cron->endWork();
 
